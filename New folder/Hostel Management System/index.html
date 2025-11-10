@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Management - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1> Hostel Management System</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="students.html">Students</a>
+    <a href="rooms.html">Rooms</a>
+    <a href="fees.html">Fees</a>
+  </nav>
+
+  <main>
+    <h2>Dashboard</h2>
+    <div class="cards">
+      <div class="card" id="totalStudents">Total Students: 0</div>
+      <div class="card" id="totalRooms">Total Rooms: 0</div>
+      <div class="card" id="roomNo">Room No: 0</div>
+      <div class="card" id="pendingFees">Pending Fees: 0</div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    loadDashboard();
+  </script>
+</body>
+</html>

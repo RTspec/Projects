@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hostel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hostel Management System</h1>
+        </header>
+        
+        <div class="login-card">
+            <h2>Login</h2>
+            
+            <div id="error-message" class="error-message" style="display: none;"></div>
+            
+            <form id="login-form" action="/login.html" method="POST">
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Enter your username or email"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+                
+                <button type="submit" class="login-btn">Login</button>
+                
+                <div class="forgot-password">
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Hostel Management System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Display error message if present in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        if (error) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = decodeURIComponent(error);
+            errorDiv.style.display = 'block';
+        }
+
+        // Handle forgot password click
+        document.querySelector('.forgot-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Password reset functionality coming soon!');
+        });
+    </script>
+</body>
+</html>

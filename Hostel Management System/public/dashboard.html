@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Management - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Hostel Management System</h1>
+    <div class="user-info">
+      <span id="username"></span>
+      <a href="/login.html" class="logout-btn">Logout</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="/dashboard.html" class="active">Dashboard</a>
+    <a href="/students.html">Students</a>
+    <a href="/rooms.html">Rooms</a>
+    <a href="/fees.html">Fees</a>
+  </nav>
+
+  <main>
+    <h2>Dashboard Overview</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Total Students</h3>
+        <div class="stat-number" id="totalStudents">0</div>
+      </div>
+      <div class="card">
+        <h3>Total Rooms</h3>
+        <div class="stat-number" id="totalRooms">0</div>
+      </div>
+      <div class="card">
+        <h3>Available Rooms</h3>
+        <div class="stat-number" id="availableRooms">0</div>
+      </div>
+      <div class="card">
+        <h3>Pending Fees</h3>
+        <div class="stat-number" id="pendingFees">₹0</div>
+      </div>
+    </div>
+
+    <div class="quick-actions">
+      <h3>Quick Actions</h3>
+      <div class="action-buttons">
+        <a href="/students.html" class="action-btn">Add Student</a>
+        <a href="/rooms.html" class="action-btn">Add Room</a>
+        <a href="/fees.html" class="action-btn">Record Fee</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Load dashboard stats
+    async function loadDashboard() {
+      try {
+        const response = await fetch('/api/stats');
+        const stats = await response.json();
+        
+        document.getElementById('totalStudents').textContent = stats.totalStudents || 0;
+        document.getElementById('totalRooms').textContent = stats.totalRooms || 0;
+        document.getElementById('availableRooms').textContent = stats.availableRooms || 0;
+        document.getElementById('pendingFees').textContent = '₹' + (stats.pendingFees || 0);
+      } catch (error) {
+        console.error('Error loading dashboard:', error);
+      }
+    }
+
+    loadDashboard();
+  </script>
+</body>
+</html>
